@@ -34,15 +34,57 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+1 Open Quartus software and create a new project. 
+
+2 Create a new VHDL file and write the code for the SR Flip Flop. 
+
+3 Compile the design by clicking on "Processing" -> "Start Compilation". 
+
+4 Create a testbench file to simulate the design. 
+
+5 Write the testbench code and add stimulus to test the SR Flip Flop. 
+
+6 Run the simulation by clicking on "Processing" -> "Start Simulation". 
+
+7 Observe the waveforms and verify the SR Flip Flop behavior. 
+
+8 Analyze the results and make any necessary changes to the design.
+
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+```
+module sr_ff (
+    input  wire clk, rst, S, R,
+    output reg  Q
+);
+    always @(posedge clk) begin
+        if (rst)
+            Q <= 1'b0;         // Reset
+        else begin
+            case ({S,R})
+                2'b00: Q <= Q;     // No change
+                2'b01: Q <= 1'b0;  // Reset
+                2'b10: Q <= 1'b1;  // Set
+                2'b11: Q <= 1'bx;  // Invalid
+            endcase
+        end
+    end
+endmodule
+```
+
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. 
+<img width="738" height="402" alt="Screenshot 2025-11-18 211353" src="https://github.com/user-attachments/assets/2ff8aef3-67ee-4483-96e3-673ac04b904c" />
+
+
+Developed by: Kamesh.A RegisterNumber:25017583
+
 
 **RTL LOGIC FOR FLIPFLOPS**
+<img width="1016" height="577" alt="image" src="https://github.com/user-attachments/assets/2a272c17-6f1c-4145-a438-07c674fd78a4" />
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+<img width="1316" height="323" alt="image" src="https://github.com/user-attachments/assets/75038876-89ad-4575-bec5-b2fec2881166" />
 
 **RESULTS**
+Thus the JK flipflop is implemented and verified.
